@@ -1,0 +1,44 @@
+<html ng-app="userApp">
+    <body ng-controller="userController" style="margin-left: 20px" ng-init="initUsers()">
+        <h2>User</h2>
+        <div>
+            <form class="form">
+                <input type="hidden" value="" ng-model="user.id">
+                <input type="text" ng-model="user.login">
+                <input type="text" ng-model="user.name">
+                <input type="password" ng-model="user.password">
+
+                <button ng-click="postUser()">Send user</button>
+                <button ng-click="putUser(user)" ng-disabled="user.id == null">Edit user</button>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Login</th>
+                        <th>Name</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in users">
+                        <td>{{user.id}}</td>
+                        <td>{{user.login}}</td>
+                        <td>{{user.name}}</td>
+                        <td>
+                            <a href="#" ng-click="edit(user)">
+                                <span class="label">edit</span>
+                            </a> |
+                            <a href="#" ng-click="deleteUser(user)">
+                                <span class="label label-important">remover</span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </body>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/userController.js"></script>
+</html>
