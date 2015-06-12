@@ -1,44 +1,79 @@
-<html ng-app="userApp">
-    <body ng-controller="userController" style="margin-left: 20px" ng-init="initUsers()">
-        <h2>User</h2>
-        <div>
-            <form class="form">
-                <input type="hidden" value="" ng-model="user.id">
-                <input type="text" ng-model="user.login">
-                <input type="text" ng-model="user.name">
-                <input type="password" ng-model="user.password">
+<!DOCTYPE html>
+<html ng-app="userApp" lang="pt-br">
+    <head>
+        <meta charset="utf-8" />
 
-                <button ng-click="postUser()">Send user</button>
-                <button ng-click="putUser(user)" ng-disabled="user.id == null">Edit user</button>
+        <title>AngularJS & VRaptor - CRUD</title>
+
+        <!-- Materialize v0.96.1 -->
+        <link rel="stylesheet" href="lib/materialize/css/materialize.min.css" type="text/css" />
+    </head>
+
+    <body ng-controller="userController" style="margin-left: 20px" ng-init="initUsers()">
+        <h2><i class="mdi-action-account-circle"></i> User</h2>
+        <div class="row">
+            <form class="form col s12">
+                <input type="hidden" value="" ng-model="user.id" />
+                <div class="row">
+                    <div class="input-field col s3">
+                        <input id="login" type="text" ng-model="user.login" placeholder="Login" />
+                        <label for="login">Login</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="name" type="text" ng-model="user.name" placeholder="Name" />
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="password" type="password" ng-model="user.password" placeholder="Password" />
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <button class="waves-effect waves-light btn" ng-click="postUser()" ng-disabled="user.id != null">Send user</button>
+                        <button class="waves-effect waves-light btn" ng-click="putUser(user)" ng-disabled="user.id == null">Edit user</button>
+                    </div>
+                </div>
             </form>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Login</th>
-                        <th>Name</th>
-                        <th>Options</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="user in users">
-                        <td>{{user.id}}</td>
-                        <td>{{user.login}}</td>
-                        <td>{{user.name}}</td>
-                        <td>
-                            <a href="#" ng-click="edit(user)">
-                                <span class="label">edit</span>
-                            </a> |
-                            <a href="#" ng-click="deleteUser(user)">
-                                <span class="label label-important">remover</span>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
-        </body>
-    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
+        <div class="row">
+            <div class="col s12">
+                <table class="bordered striped hoverable responsive-table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Login</th>
+                            <th>Name</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="user in users">
+                            <td>{{user.id}}</td>
+                            <td>{{user.login}}</td>
+                            <td>{{user.name}}</td>
+                            <td>
+                                <a class="waves-effect waves-light btn blue" href="#" ng-click="edit(user)">
+                                    <span class="label"><i class="mdi-editor-border-color"></i> Edit</span>
+                                </a>
+                                <a class="waves-effect waves-light btn red" href="#" ng-click="deleteUser(user)">
+                                    <span class="label label-important"><i class="mdi-action-highlight-remove"></i> Remove</span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+
+    <!-- jQuery v1.11.3 -->
+    <script type="text/javascript" src="lib/jquery/jquery-1.11.3.min.js"></script>
+
+    <!-- AngularJS v1.3.15 -->
+    <script type="text/javascript" src="lib/angularjs/angular.min.js"></script>
+
+    <!-- Materialize v0.96.1 -->
+    <script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+    <!-- UserController -->
     <script type="text/javascript" src="js/userController.js"></script>
 </html>

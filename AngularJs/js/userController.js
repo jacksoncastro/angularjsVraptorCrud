@@ -1,7 +1,7 @@
 var mvcApp = angular.module('userApp', []);
 mvcApp.controller('userController', function mvcController($scope, $http, $window) {
 
-    var base_url = 'http://localhost:8080/vraptorCrud';
+    var base_url = 'http://192.168.100.111:8080/vraptorCrud';
 
     var reset = function(){
         $scope.user = {id : null, login : "", name : "", password: ""};
